@@ -1,8 +1,6 @@
 #-----------------------------------------------------------------------------------------
 # import libraries
 import pandas as pd
-from PIL import Image
-import urllib.request
 import re
 import sys
 import nltk
@@ -17,8 +15,7 @@ nltk.download('punkt')
 nltk.download('vader_lexicon')
 
 #-----------------------------------------------------------------------------------------
-urllib.request.urlretrieve(
-  'https://github.com/krishnakanth-G/Sentiment-Analyzer/tree/main/img/',"S.png","1.jpg","2.jpg","3.jpg")
+
 #set title
 st.markdown("<h1 style='text-align: center; color: white;'>Sentiment Analyzer</h1>", unsafe_allow_html=True)
 
@@ -46,21 +43,16 @@ def clean_data(text):
 # function to give the Sentiment score to reviews
 def sentiment(ctext):
     score = sentiment_analyzer.polarity_scores(ctext)
-    print(score)
-    if score['pos'] > 0.6 or (score['neu'] > 0.4 and score['neg'] < 0.2) :
+    if score['pos'] > 0.6 or (score['neu'] < 0.5 and score['neg'] < 0.2) :
         return 'Positive'
-    elif score['neg'] > 0.6 or (score['neu'] > 0.4 and score['pos'] < 0.2):
+    elif score['neg'] > 0.6 or (score['neu'] < 0.5 and score['pos'] < 0.2):
         return 'Negative'
     else:
         return 'Neutral'
 
-image = Image.open('S.png')
-pos = Image.open('1.jpg')
-neu = Image.open('2.jpg')
-neg = Image.open('3.jpg')
 #--------------------------------------------------------------------------------------------------
 
-st.image(image, caption='Sentiment analysis')
+st.image("https://github.com/krishnakanth-G/Sentiment-Analyzer/blob/main/img/S.png?raw=true", caption='Sentiment analysis')
 st.write("Hi, Nice to meet you")
 
 # text input
@@ -72,9 +64,10 @@ if st.button('Get Sentiment'):
     tsentiment = sentiment(ctext)
     st.caption("'"+text+"' is a "+tsentiment+" text" )
     if tsentiment == 'Positive':
-        st.image(pos,caption='Positive')
+        st.image("https://github.com/krishnakanth-G/Sentiment-Analyzer/blob/main/img/1.jpg?raw=true",caption='Positive')
     if tsentiment == 'Neutral':
-        st.image(neu,caption='Neutral')
+        st.image("https://github.com/krishnakanth-G/Sentiment-Analyzer/blob/main/img/2.jpg?raw=true",caption='Neutral')
     if tsentiment == 'Negative':
-        st.image(neg,caption='Negative')
+        st.image("https://github.com/krishnakanth-G/Sentiment-Analyzer/blob/main/img/3.jpg?raw=true",caption='Negative')
 #---------------------------------------------------------------------------------------------------
+
