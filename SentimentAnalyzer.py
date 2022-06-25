@@ -2,6 +2,7 @@
 # import libraries
 import pandas as pd
 from PIL import Image
+import urllib.request
 import re
 import sys
 import nltk
@@ -16,7 +17,8 @@ nltk.download('punkt')
 nltk.download('vader_lexicon')
 
 #-----------------------------------------------------------------------------------------
-
+urllib.request.urlretrieve(
+  'https://github.com/krishnakanth-G/Sentiment-Analyzer/tree/main/img/',"S.png","1.jpg","2.jpg","3.jpg")
 #set title
 st.markdown("<h1 style='text-align: center; color: white;'>Sentiment Analyzer</h1>", unsafe_allow_html=True)
 
@@ -52,10 +54,10 @@ def sentiment(ctext):
     else:
         return 'Neutral'
 
-image = Image.open('https://github.com/krishnakanth-G/Sentiment-Analyzer/tree/main/img/S.png')
-pos = Image.open('https://github.com/krishnakanth-G/Sentiment-Analyzer/tree/main/img/1.jpg')
-neu = Image.open('https://github.com/krishnakanth-G/Sentiment-Analyzer/tree/main/img/2.jpg')
-neg = Image.open('https://github.com/krishnakanth-G/Sentiment-Analyzer/tree/main/img/3.jpg')
+image = Image.open('S.png')
+pos = Image.open('1.jpg')
+neu = Image.open('2.jpg')
+neg = Image.open('3.jpg')
 #--------------------------------------------------------------------------------------------------
 
 st.image(image, caption='Sentiment analysis')
