@@ -52,10 +52,10 @@ def sentiment(ctext):
     else:
         return 'Neutral'
 
-image = Image.open('/img/S.png')
-pos = Image.open('/img/1.jpg')
-neu = Image.open('/img/2.jpg')
-neg = Image.open('/img/3.jpg')
+image = Image.open('https://github.com/krishnakanth-G/Sentiment-Analyzer/tree/main/img/S.png')
+pos = Image.open('https://github.com/krishnakanth-G/Sentiment-Analyzer/tree/main/img/1.jpg')
+neu = Image.open('https://github.com/krishnakanth-G/Sentiment-Analyzer/tree/main/img/2.jpg')
+neg = Image.open('https://github.com/krishnakanth-G/Sentiment-Analyzer/tree/main/img/3.jpg')
 #--------------------------------------------------------------------------------------------------
 
 st.image(image, caption='Sentiment analysis')
